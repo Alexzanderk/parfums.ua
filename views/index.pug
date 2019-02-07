@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+html(lang="ru")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible", content="ie=edge")
+        title Document
+        script(src="js/script.js")
+    body
+        h1 GET Comments
+        form#getcomments(action="/" method="post")
+            textarea(name="posts_url", cols="100", rows="10")
+            br
+            button(type="submit" form='getcomments') Get comments
+        button(type="submit" form='saveform') Save comments
+        
+        if data !== undefined
+            form#saveform(action="/save", method="post")
+                ul
+                    each element in data
+                        li
+                            input(type="hidden", name="product_name" value=element.product_name)
+                            input(type="hidden", name="author" value=element.author)
+                            input(type="hidden", name="comment" value=element.comment)
+
+                            span.product= `${element.product_name}`
+                            span : 
+                            span.author= `${element.author}`
+                            span  ---- 
+                            span.comment= `${element.comment}`
